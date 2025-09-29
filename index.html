@@ -1,43 +1,18 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <section id="filtro-perfil">
-    <h2>1. Encontre o Tipo de Apoio Certo</h2>
-    <p>Selecione a opção que melhor descreve o nível de suporte e as características da pessoa que você apoia. Ao selecionar, você verá dicas e recursos focados neste perfil.</p>
-    
-    <div id="opcoes-perfil">
-        <button data-perfil="nivel-3-extenso">
-            Nível 3 (Agressivo / Não Verbal / Hiperativo)
-        </button>
-        
-        <button data-perfil="nivel-2-moderado">
-            Nível 2 (Sensível / Emotivo / Suporte Substancial)
-        </button>
-            
-        <button data-perfil="nivel-1-minimo">
-            Nível 1 (Focado / Calmo / Suporte Mínimo)
-        </button>
-    </div>
-</section>
-
-<div id="area-de-conteudo">
-
-    </div>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bem-vindo(a)!</title>
+    <title>AutiPath - Bem-vindo(a)!</title>
     <style>
+        /* CSS OTIMIZADO */
         body {
             font-family: Arial, sans-serif;
             background-color: #f0f8ff; /* Azul claro e suave */
             color: #4a4a4a;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
             margin: 0;
             padding: 20px;
-            box-sizing: border-box;
+            /* REMOVIDOS estilos de centralização para permitir layout em tela cheia */
         }
         .container {
             background-color: #fff;
@@ -47,65 +22,39 @@
             max-width: 600px;
             width: 100%;
             text-align: center;
+            margin: 50px auto 20px auto; /* Centraliza a div do formulário */
         }
-        h1 {
-            color: #87ceeb; /* Azul céu */
-            margin-bottom: 20px;
+        h1 { /* ... estilos ... */ }
+        /* ... Mantenha todos os outros estilos do seu CSS original aqui ... */
+        
+        /* Adicionando estilo básico para o filtro (para funcionar melhor) */
+        #filtro-perfil {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #e6f7ff;
+            border-radius: 10px;
         }
-        .form-section {
-            margin-bottom: 25px;
-            text-align: left;
-        }
-        .form-section label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: bold;
-            color: #6a5acd; /* Roxo claro */
-        }
-        .input-group {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-        }
-        input[type="text"], input[type="number"] {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #b0c4de; /* Azul suave */
-            border-radius: 8px;
-            box-sizing: border-box;
-            font-size: 16px;
-            transition: border-color 0.3s;
-        }
-        input[type="text"]:focus, input[type="number"]:focus {
-            border-color: #6a5acd;
-            outline: none;
-        }
-        #children-names-container {
-            margin-top: 15px;
-        }
-        .child-input-group {
-            margin-bottom: 15px;
-        }
-        .child-input-group label {
-            font-size: 14px;
-        }
-        button {
-            background-color: #87ceeb;
-            color: white;
-            padding: 15px 30px;
-            border: none;
-            border-radius: 8px;
+        #opcoes-perfil button {
+            /* Estilos básicos para os botões do filtro */
+            padding: 10px 15px;
+            margin: 5px;
+            border: 1px solid #6a5acd; 
+            background-color: white;
             cursor: pointer;
-            font-size: 18px;
-            font-weight: bold;
-            transition: background-color 0.3s;
+            border-radius: 5px;
         }
-        button:hover {
-            background-color: #72bce7;
+        .card { 
+            border: 1px solid #b0c4de; 
+            padding: 15px; 
+            margin-bottom: 10px; 
+            border-radius: 8px;
+            /* IMPORTANTE: Inicialmente, o JS irá esconder esses cards */
         }
     </style>
 </head>
 <body>
+    
     <div class="container">
         <h1>Bem-vindo(a)!</h1>
         <form id="user-form">
@@ -127,21 +76,43 @@
                 <div id="children-names-container">
                     </div>
             </div>
-
+            
             <button type="submit">Continuar</button>
         </form>
     </div>
 
+    <section id="filtro-perfil">
+        <h2>2. Encontre o Tipo de Apoio Certo</h2>
+        <p>Selecione a opção que melhor descreve o nível de suporte e as características da pessoa que você apoia.</p>
+        
+        <div id="opcoes-perfil">
+            <button data-perfil="nivel-3-extenso">
+                Nível 3 (Agressivo / Não Verbal / Hiperativo)
+            </button>
+            <button data-perfil="nivel-2-moderado">
+                Nível 2 (Sensível / Emotivo / Suporte Substancial)
+            </button>
+            <button data-perfil="nivel-1-minimo">
+                Nível 1 (Focado / Calmo / Suporte Mínimo)
+            </button>
+        </div>
+    </section>
+
+    <div id="area-de-conteudo">
+        <h2>Recursos Selecionados</h2>
+        <p>Selecione um perfil acima para carregar as dicas específicas!</p>
+    </div>
+
     <script>
+        // Código JavaScript do formulário de boas-vindas (criação de campos)
         document.getElementById('num-children').addEventListener('input', function() {
+            // ... seu código JS do formulário (sem alterações) ...
             const numChildren = this.value;
             const container = document.getElementById('children-names-container');
             const section = document.getElementById('children-names-section');
 
-            // Limpa o conteúdo anterior
             container.innerHTML = '';
 
-            // Se o número for 0 ou vazio, esconde a seção
             if (numChildren > 0) {
                 section.style.display = 'block';
             } else {
@@ -149,7 +120,6 @@
                 return;
             }
 
-            // Cria as caixas de texto com base no número
             for (let i = 0; i < numChildren; i++) {
                 const childInputGroup = document.createElement('div');
                 childInputGroup.className = 'child-input-group';
@@ -164,27 +134,28 @@
             }
         });
 
+        // Código JavaScript do formulário (Submissão)
         document.getElementById('user-form').addEventListener('submit', function(event) {
             event.preventDefault();
-
-            // Salva os dados para passar para a próxima página
+            // ... seu código JS de submissão (sem alterações) ...
             const formData = new FormData(this);
             const data = {};
             for (let [key, value] of formData.entries()) {
                 data[key] = value;
             }
 
-            // Armazena os dados em localStorage para a próxima página acessá-los
             localStorage.setItem('userData', JSON.stringify(data));
 
-            // Redireciona para a segunda página
-            window.location.href = 'pagina2.html';
+            // ATENÇÃO: Se você quer que o filtro seja usado nesta PÁGINA, 
+            // você deve remover o redirecionamento ou executá-lo condicionalmente.
+            // Para testar o filtro, vou COMENTAR o redirecionamento por enquanto:
+            // window.location.href = 'pagina2.html'; 
+            
+            alert('Dados do formulário salvos! Agora use o filtro abaixo.');
+            
         });
     </script>
-<footer>
-        <p>AutiPath © 2024</p>
-    </footer>
-
+    
     <script src="script.js"></script> 
 </body>
 </html>
