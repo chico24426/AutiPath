@@ -12,7 +12,6 @@
             color: #4a4a4a;
             margin: 0;
             padding: 20px;
-            /* REMOVIDOS estilos de centralização para permitir layout em tela cheia */
         }
         .container {
             background-color: #fff;
@@ -24,10 +23,62 @@
             text-align: center;
             margin: 50px auto 20px auto; /* Centraliza a div do formulário */
         }
-        h1 { /* ... estilos ... */ }
-        /* ... Mantenha todos os outros estilos do seu CSS original aqui ... */
-        
-        /* Adicionando estilo básico para o filtro (para funcionar melhor) */
+        h1 {
+            color: #87ceeb; /* Azul céu */
+            margin-bottom: 20px;
+        }
+        .form-section {
+            margin-bottom: 25px;
+            text-align: left;
+        }
+        .form-section label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #6a5acd; /* Roxo claro */
+        }
+        .input-group {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #b0c4de; /* Azul suave */
+            border-radius: 8px;
+            box-sizing: border-box;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        input[type="text"]:focus, input[type="number"]:focus {
+            border-color: #6a5acd;
+            outline: none;
+        }
+        #children-names-container {
+            margin-top: 15px;
+        }
+        .child-input-group {
+            margin-bottom: 15px;
+        }
+        .child-input-group label {
+            font-size: 14px;
+        }
+        button {
+            background-color: #87ceeb;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #72bce7;
+        }
+        /* Estilos do filtro */
         #filtro-perfil {
             max-width: 800px;
             margin: 20px auto;
@@ -36,7 +87,6 @@
             border-radius: 10px;
         }
         #opcoes-perfil button {
-            /* Estilos básicos para os botões do filtro */
             padding: 10px 15px;
             margin: 5px;
             border: 1px solid #6a5acd; 
@@ -49,7 +99,6 @@
             padding: 15px; 
             margin-bottom: 10px; 
             border-radius: 8px;
-            /* IMPORTANTE: Inicialmente, o JS irá esconder esses cards */
         }
     </style>
 </head>
@@ -99,40 +148,39 @@
     </section>
 
     <div id="area-de-conteudo">
-    <h2>Recursos Selecionados</h2>
-    
-    <div class="card nivel-3-extenso">
-        <h3>Plano de Estabilização em Crise</h3>
-        <p>Passos imediatos para desescalar a agitação e garantir a segurança.</p>
-        <a href="#">Ver detalhes...</a>
-    </div>
+        <h2>Recursos Selecionados</h2>
+        
+        <div class="card nivel-3-extenso">
+            <h3>Plano de Estabilização em Crise</h3>
+            <p>Passos imediatos para desescalar a agitação e garantir a segurança.</p>
+            <a href="#">Ver detalhes...</a>
+        </div>
 
-    <div class="card nivel-3-extenso">
-        <h3>Uso de PECS Avançado</h3>
-        <p>Recursos visuais para comunicação de necessidades básicas e emocionais complexas.</p>
-    </div>
+        <div class="card nivel-3-extenso">
+            <h3>Uso de PECS Avançado</h3>
+            <p>Recursos visuais para comunicação de necessidades básicas e emocionais complexas.</p>
+        </div>
 
-    <div class="card nivel-2-moderado">
-        <h3>Estratégias de Regulação Sensorial</h3>
-        <p>Lista de ferramentas sensoriais (fidget toys, coletes de peso) para auto-regulação.</p>
-    </div>
-    
-    <div class="card nivel-1-minimo">
-        <h3>Clubes Sociais e Interação</h3>
-        <p>Sugestões de atividades em grupo para desenvolvimento de habilidades sociais sem pressão.</p>
-    </div>
-    
-    <div class="card nivel-2-moderado nivel-1-minimo">
-        <h3>Dicas de Rotina Visual</h3>
-        <p>Exemplo de rotina visual fácil de implementar em casa (útil para Nível 1 e 2).</p>
-    </div>
+        <div class="card nivel-2-moderado">
+            <h3>Estratégias de Regulação Sensorial</h3>
+            <p>Lista de ferramentas sensoriais (fidget toys, coletes de peso) para auto-regulação.</p>
+        </div>
+        
+        <div class="card nivel-1-minimo">
+            <h3>Clubes Sociais e Interação</h3>
+            <p>Sugestões de atividades em grupo para desenvolvimento de habilidades sociais sem pressão.</p>
+        </div>
+        
+        <div class="card nivel-2-moderado nivel-1-minimo">
+            <h3>Dicas de Rotina Visual</h3>
+            <p>Exemplo de rotina visual fácil de implementar em casa (útil para Nível 1 e 2).</p>
+        </div>
 
-</div>
+    </div>
 
     <script>
         // Código JavaScript do formulário de boas-vindas (criação de campos)
         document.getElementById('num-children').addEventListener('input', function() {
-            // ... seu código JS do formulário (sem alterações) ...
             const numChildren = this.value;
             const container = document.getElementById('children-names-container');
             const section = document.getElementById('children-names-section');
@@ -163,7 +211,6 @@
         // Código JavaScript do formulário (Submissão)
         document.getElementById('user-form').addEventListener('submit', function(event) {
             event.preventDefault();
-            // ... seu código JS de submissão (sem alterações) ...
             const formData = new FormData(this);
             const data = {};
             for (let [key, value] of formData.entries()) {
@@ -171,13 +218,11 @@
             }
 
             localStorage.setItem('userData', JSON.stringify(data));
-
-            // ATENÇÃO: Se você quer que o filtro seja usado nesta PÁGINA, 
-            // você deve remover o redirecionamento ou executá-lo condicionalmente.
-            // Para testar o filtro, vou COMENTAR o redirecionamento por enquanto:
-            // window.location.href = 'pagina2.html'; 
             
             alert('Dados do formulário salvos! Agora use o filtro abaixo.');
+            
+            // Se você deseja ir para a página 2 após o filtro funcionar, descomente esta linha:
+            // window.location.href = 'pagina2.html'; 
             
         });
     </script>
@@ -185,4 +230,3 @@
     <script src="script.js"></script> 
 </body>
 </html>
-
