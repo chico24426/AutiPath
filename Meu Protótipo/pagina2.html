@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes das Crianças</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff; /* Azul claro e suave */
+            color: #4a4a4a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+        }
+        h1 {
+            color: #87ceeb; /* Azul céu */
+            margin-bottom: 20px;
+        }
+        .welcome-text {
+            color: #6a5acd;
+            font-size: 20px;
+            margin-bottom: 30px;
+            font-weight: bold;
+        }
+        .form-section {
+            margin-bottom: 25px;
+            text-align: left;
+        }
+        .form-section label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #6a5acd;
+        }
+        .input-group {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        input[type="number"] {
+            flex: 1;
+            padding: 12px;
+            border: 1px solid #b0c4de;
+            border-radius: 8px;
+            box-sizing: border-box;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        select {
+            flex: 1;
+            padding: 12px;
+            border: 1px solid #b0c4de;
+            border-radius: 8px;
+            box-sizing: border-box;
+            font-size: 16px;
+            color: #4a4a4a;
+            background-color: white;
+            cursor: pointer;
+        }
+        input:focus, select:focus {
+            border-color: #6a5acd;
+            outline: none;
+        }
+        .child-input-group {
+            margin-bottom: 15px;
+        }
+        .child-input-group label {
+            font-size: 16px;
+        }
+        button {
+            background-color: #87ceeb;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #72bce7;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Detalhes das Crianças</h1>
+        <p class="welcome-text" id="welcome-message"></p>
+        <form id="details-form">
+            <div id="children-details-container">
+                </div>
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+
+    <script>
+        window.onload = function() {
+            // Pega os dados armazenados na página anterior
+            const userDataString = localStorage.getItem('userData');
+            if (!userDataString) {
+                window.location.href = 'index.html';
+                return;
+            }
+
+            const userData = JSON.parse(userDataString);
+            const preferredName = userData.userNickname;
+            const numChildren = parseInt(userData.numChildren);
+            const container = document.getElementById('children-details-container');
+
+            document.getElementById('welcome-message').textContent = `Olá, ${preferredName}! Agora, por favor, nos diga sobre as crianças.`;
+
+            // Gera as caixas de texto dinamicamente
+            for (let i = 0; i < numChildren; i++) {
+                const childName = userData[`childNickname${i}`] || userData[`childName${i}`];
+                const childInputGroup = document.createElement('div');
+                childInputGroup.className = 'child-input-group';
+                childInputGroup.innerHTML = `
+                    <label>Detalhes de ${childName}:</label>
+                    <div class="input-group">
+                        <input type="number" name="childAge${i}" placeholder="Idade (anos)" min="0" required>
+                        <select name="childSpectrum${i}" required>
+                            <option value="">Nível do espectro</option>
+                            <option value="1">Nível 1</option>
+                            <option value="2">Nível 2</option>
+                            <option value="3">Nível 3</option>
+                        </select>
+                    </div>
+                `;
+                container.appendChild(childInputGroup);
+            }
+        };
+
+        document.getElementById('details-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Pega os dados antigos
+            const userDataString = localStorage.getItem('userData');
+            const userData = JSON.parse(userDataString);
+
+            // Adiciona os novos dados ao objeto
+            const formInputs = new FormData(this);
+            for (let [key, value] of formInputs.entries()) {
+                userData[key] = value;
+            }
+
+            // Armazena os dados atualizados para a próxima página
+            localStorage.setItem('userData', JSON.stringify(userData));
+
+            // Redireciona para a terceira página
+            window.location.href = 'pagina3.html';
+        });
+    </script>
+</body>
+</html>
