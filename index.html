@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AutiPath - Bem-vindo(a)!</title>
     <style>
-    /* CSS OTIMIZADO */
+    /* CSS BÁSICO */
     body {
         font-family: Arial, sans-serif;
         background-color: #f0f8ff; /* Azul claro e suave */
-        color: #4a4a4a; /* Cor padrão do texto (cinza) */
+        color: #4a4a4a; /* Cor padrão do body */
         margin: 0;
         padding: 20px;
     }
@@ -27,60 +27,20 @@
         color: #87ceeb;
         margin-bottom: 20px;
     }
-    .form-section {
-        margin-bottom: 25px;
-        text-align: left;
-    }
-    .form-section label {
-        display: block;
-        margin-bottom: 8px;
-        font-weight: bold;
-        color: #6a5acd;
-    }
-    .input-group {
-        display: flex;
-        gap: 10px;
-        align-items: center;
-    }
-    input[type="text"], input[type="number"] {
-        width: 100%;
-        padding: 12px;
-        border: 1px solid #b0c4de;
-        border-radius: 8px;
-        box-sizing: border-box;
-        font-size: 16px;
-        transition: border-color 0.3s;
-    }
-    input[type="text"]:focus, input[type="number"]:focus {
-        border-color: #6a5acd;
-        outline: none;
-    }
-    #children-names-container {
-        margin-top: 15px;
-    }
-    .child-input-group {
-        margin-bottom: 15px;
-    }
-    .child-input-group label {
-        font-size: 14px;
-    }
-    button {
-        background-color: #87ceeb;
-        color: white;
-        padding: 15px 30px;
-        border: none;
-        border-radius: 8px;
-        cursor: pointer;
-        font-size: 18px;
-        font-weight: bold;
-        transition: background-color 0.3s;
-    }
-    button:hover {
-        background-color: #72bce7;
-    }
-    
+    /* ... (Estilos do Formulário - MANTIDOS IGUAIS) ... */
+    .form-section { margin-bottom: 25px; text-align: left; }
+    .form-section label { display: block; margin-bottom: 8px; font-weight: bold; color: #6a5acd; }
+    .input-group { display: flex; gap: 10px; align-items: center; }
+    input[type="text"], input[type="number"] { width: 100%; padding: 12px; border: 1px solid #b0c4de; border-radius: 8px; box-sizing: border-box; font-size: 16px; transition: border-color 0.3s; }
+    input[type="text"]:focus, input[type="number"]:focus { border-color: #6a5acd; outline: none; }
+    #children-names-container { margin-top: 15px; }
+    .child-input-group { margin-bottom: 15px; }
+    .child-input-group label { font-size: 14px; }
+    button { background-color: #87ceeb; color: white; padding: 15px 30px; border: none; border-radius: 8px; cursor: pointer; font-size: 18px; font-weight: bold; transition: background-color 0.3s; }
+    button:hover { background-color: #72bce7; }
+
     /* ---------------------------------------------------- */
-    /* ESTILOS DO FILTRO E CARDS (CONSOLIDADO) */
+    /* ESTILOS DO FILTRO E CARDS (CONSOLIDADO E CORRIGIDO) */
     /* ---------------------------------------------------- */
     
     #filtro-perfil {
@@ -99,6 +59,12 @@
         border-radius: 5px;
     }
 
+    /* GARANTE QUE O TÍTULO DA SEÇÃO APAREÇA */
+    #area-de-conteudo h2 {
+        color: #4a4a4a;
+        display: block;
+    }
+
     /* ESTILO PRINCIPAL DOS CARDS */
     .card { 
         border: 1px solid #b0c4de; 
@@ -108,19 +74,13 @@
         background-color: white; /* Garante fundo branco */
     }
 
-    /* GARANTE A COR ESCURA DO TEXTO */
+    /* GARANTE A COR ESCURA DO TEXTO - O MAIS IMPORTANTE */
     .card h3 {
         color: #000000; /* Preto forte para o título */
         margin-top: 0;
     }
     .card p, .card a {
         color: #333333; /* Cinza escuro para o corpo do texto */
-    }
-    
-    /* GARANTE QUE O TÍTULO DA SEÇÃO APAREÇA */
-    #area-de-conteudo h2 {
-        color: #4a4a4a !important;
-        display: block !important;
     }
 </style>
 </head>
@@ -252,6 +212,7 @@
     <script src="script.js"></script> 
 </body>
 </html>
+
 
 
 
