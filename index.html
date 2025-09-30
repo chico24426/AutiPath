@@ -9,7 +9,7 @@
     body {
         font-family: Arial, sans-serif;
         background-color: #f0f8ff; /* Azul claro e suave */
-        color: #4a4a4a; /* Cor padrão do body */
+        color: #000000; /* << CORRIGIDO: PRETO ABSOLUTO PARA GARANTIR HERANÇA */
         margin: 0;
         padding: 20px;
     }
@@ -65,11 +65,13 @@
     padding: 15px; 
     margin-bottom: 10px; 
     border-radius: 8px;
-    background-color: white; /* Fundo branco garantido */
+    background-color: white; 
+    /* << CORREÇÃO FINAL: FORÇA COR PARA INÍCIO DE HERANÇA DENTRO DO CARD */
+    color: #000000 !important; 
 }
 
 /* GARANTE A COR ESCURA DO TEXTO (MÁXIMA PRIORIDADE) */
-/* Aumentando a especificidade para garantir que o texto apareça */
+/* Mantido como backup, mas a regra acima deve resolver */
 #area-de-conteudo .card h3 {
     color: #000000 !important; /* Preto forte forçado para o título */
     margin-top: 0;
@@ -213,10 +215,3 @@
     <script src="script.js"></script> 
 </body>
 </html>
-
-
-
-
-
-
-
