@@ -65,23 +65,26 @@
         display: block;
     }
 
-    /* ESTILO PRINCIPAL DOS CARDS */
-    .card { 
-        border: 1px solid #b0c4de; 
-        padding: 15px; 
-        margin-bottom: 10px; 
-        border-radius: 8px;
-        background-color: white; /* Garante fundo branco */
-    }
+    /* --- REGRA CORRIGIDA --- */
 
-    /* GARANTE A COR ESCURA DO TEXTO - O MAIS IMPORTANTE */
-    .card h3 {
-        color: #000000; /* Preto forte para o título */
-        margin-top: 0;
-    }
-    .card p, .card a {
-        color: #333333; /* Cinza escuro para o corpo do texto */
-    }
+/* ESTILO PRINCIPAL DOS CARDS */
+.card { 
+    border: 1px solid #b0c4de; 
+    padding: 15px; 
+    margin-bottom: 10px; 
+    border-radius: 8px;
+    background-color: white; 
+}
+
+/* GARANTE A COR ESCURA DO TEXTO - FORÇA MÁXIMA */
+/* Usamos .card H3, .card P e .card A para aumentar a especificidade */
+.card h3 {
+    color: #000000 !important; /* Preto forte */
+    margin-top: 0;
+}
+.card p, .card a {
+    color: #333333 !important; /* Cinza escuro */
+}
 </style>
 </head>
 <body>
@@ -212,6 +215,7 @@
     <script src="script.js"></script> 
 </body>
 </html>
+
 
 
 
